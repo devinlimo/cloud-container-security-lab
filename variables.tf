@@ -1,14 +1,3 @@
-# Jenkins Settings
-variable "jenkins_admin_user" {
-  type        = string
-  description = "Admin user of the Jenkins Application."
-  default     = "admin"
-}
-
-variable "jenkins_admin_password" {
-  type        = string
-  description = "Admin password of the Jenkins Application."
-}
 # EKS Cluster Settings
 variable "cluster_name" {
   type        = string
@@ -19,7 +8,7 @@ variable "cluster_name" {
 variable "cluster_version" {
   type        = string
   description = "The version of the EKS cluster."
-  default     = "1.27"
+  default     = "1.28"
 }
 
 variable "worker_group_name" {
@@ -31,7 +20,7 @@ variable "worker_group_name" {
 variable "worker_group_instance_type" {
   type        = list(string)
   description = "The instance type of the worker group nodes. Must be large enough to support the amount of NICS assigned to pods."
-  default     = ["t3.medium"]
+  default     = ["t3.xlarge"]
 }
 
 variable "autoscaling_group_min_size" {
@@ -43,13 +32,13 @@ variable "autoscaling_group_min_size" {
 variable "autoscaling_group_desired_capacity" {
   type        = number
   description = "The desired number of nodes the worker group should attempt to maintain."
-  default     = 2
+  default     = 1
 }
 
 variable "autoscaling_group_max_size" {
   type        = number
   description = "The maximum number of nodes the worker group can scale to."
-  default     = 3
+  default     = 1
 }
 
 variable "create_cluster_primary_security_group_tags" {
@@ -61,7 +50,7 @@ variable "create_cluster_primary_security_group_tags" {
 variable "aws_region" {
   type        = string
   description = "The AWS region for the provider to deploy resources into."
-  default     = "us-east-1"
+  default     = "us-west-2"
 }
 
 variable "vpc_cidr_block" {
@@ -73,13 +62,13 @@ variable "vpc_cidr_block" {
 variable "dev1_subnet_az" {
   type        = string
   description = "Availability Zone of the subnet 1."
-  default     = "us-east-1a"
+  default     = "us-west-2a"
 }
 
 variable "dev2_subnet_az" {
   type        = string
   description = "Availability zone of subnet 2."
-  default     = "us-east-1b"
+  default     = "us-west-2b"
 }
 
 variable "dev1_subnet_cidr_block" {

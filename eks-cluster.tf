@@ -17,7 +17,17 @@ module "my-cluster" {
   }
 
   eks_managed_node_groups = {
-    blue = {}
+    blue = {      
+      min_size     = var.autoscaling_group_min_size
+      max_size     = var.autoscaling_group_max_size
+      desired_size = var.autoscaling_group_desired_capacity
+
+      instance_types = var.worker_group_instance_type
+      capacity_type  = "SPOT"
+      labels = {
+        Environment = "dev"
+     }
+    }
     green = {
       min_size     = var.autoscaling_group_min_size
       max_size     = var.autoscaling_group_max_size

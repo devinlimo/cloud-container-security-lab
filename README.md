@@ -1,1 +1,1 @@
-# cloud-container-security-lab
+# sysdig-project
