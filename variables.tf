@@ -26,13 +26,13 @@ variable "worker_group_instance_type" {
 variable "autoscaling_group_min_size" {
   type        = number
   description = "The minimum number of nodes the worker group can scale to."
-  default     = 1
+  default     = 0
 }
 
 variable "autoscaling_group_desired_capacity" {
   type        = number
   description = "The desired number of nodes the worker group should attempt to maintain."
-  default     = 1
+  default     = 0
 }
 
 variable "autoscaling_group_max_size" {
@@ -46,6 +46,31 @@ variable "create_cluster_primary_security_group_tags" {
   type        = bool
   default     = true
 }
+
+# EC2 Proxy Settings
+
+variable "proxy_instance_type" {
+  description = "The instance type of the EC2 instance."
+  default     = "t3.micro"
+}
+
+variable "proxy_ami" {
+  description = "The AMI to use for the EC2 instance."
+  default     = "ami-04b4d3355a2e2a403"
+}
+
+variable "proxy_key_name" {
+  description = "The key name of the Key Pair to use for the instance."
+  type        = string
+  default     = "proxy-key"
+}
+
+variable "proxy_security_group" {
+  description = "Proxy security group."
+  type        = string
+  default     = "sg-REPLACE_ME"
+}
+
 # Networking Settings
 variable "aws_region" {
   type        = string

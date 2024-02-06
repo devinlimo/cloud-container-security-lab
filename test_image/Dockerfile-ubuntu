@@ -1,0 +1,11 @@
+FROM ubuntu:18.04  
+LABEL maintainer="devin.limo@gmail.com" 
+RUN  apt-get -y update && apt-get -y install nginx && \
+    apt-get install --yes --no-install-recommends wget build-essential libcurl4 && \
+    wget --no-check-certificate https://curl.se/download/curl-7.59.0.tar.gz && \
+    tar -xvf curl-7.59.0.tar.gz && cd curl-7.59.0 && \
+    ./configure && make && make install
+COPY files/default /etc/nginx/sites-available/default
+COPY files/index.html /usr/share/nginx/html/index.html
+EXPOSE 80
+CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
