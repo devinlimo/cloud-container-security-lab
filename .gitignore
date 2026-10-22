@@ -33,3 +33,6 @@ override.tf.json
 .terraformrc
 terraform.rc
 sysdig-cli-scanner
+
+# Local secrets/keys
+*.pem
